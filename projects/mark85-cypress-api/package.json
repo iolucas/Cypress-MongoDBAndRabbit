@@ -1,0 +1,33 @@
+{
+  "name": "mark85-cypress-api",
+  "version": "1.0.0",
+  "description": "API testing project using Cypress and MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iolucas/Cypress-and-Mongo-project.git"
+  },
+  "keywords": [
+    "cypress",
+    "api",
+    "mark85",
+    "mongodb",
+    "rabbimq"
+  ],
+  "author": "Lucas Antunes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iolucas/Cypress-and-Mongo-project/issues"
+  },
+  "homepage": "https://github.com/iolucas/Cypress-and-Mongo-project#readme",
+  "dependencies": {
+    "cypress": "^12.12.0"
+  },
+  "devDependencies": {
+    "cypress-plugin-api": "^2.11.1",
+    "mongodb": "^6.3.0"
+  }
+}
