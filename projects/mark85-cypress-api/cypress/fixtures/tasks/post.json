@@ -1,0 +1,27 @@
+{
+  "create": {
+    "user": {
+      "name": "Colbie Caillat",
+      "email": "caillat@hotmail.com",
+      "password": "96523345"
+    },
+    "task": {
+      "name": "Pagar fatura do cartão",
+      "tags": [
+        "nubank", 
+        "ourocard", 
+        "inter"
+      ]
+    }
+  },
+  "dup": {
+    "user": {
+      "name": "Paula Fernandes",
+      "email": "paulinha@gmail.com",
+      "password": "96523345"
+    },
+    "task": {
+      "name": "Fazer compra no supermercado"
+    }
+  }
+}

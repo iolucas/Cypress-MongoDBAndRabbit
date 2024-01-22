@@ -1,0 +1,30 @@
+{
+  "login": {
+    "name": "Evan Taubenfeld",
+    "email": "taubenfeld@hotmail.com",
+    "password": "96523345"
+  },
+  "inv_pass": {
+    "email": "lucas@yahoo.com",
+    "password": "987654"
+  },
+  "email_404": {
+    "email": "lucasantunes@yahoo.com",
+    "password": "96523345"
+  },
+  "create": {
+    "name": "Lucas Antunes",
+    "email": "lucas@yahoo.com",
+    "password": "96523345"
+  },
+  "dup_email": {
+    "name": "Tim McGraw",
+    "email": "mcgraw@icloud.com",
+    "password": "96523345"
+  },
+  "required": {
+    "name": "Lucas Antunes",
+    "email": "lucas@gmail.com",
+    "password": "pwd123"
+  }
+}
