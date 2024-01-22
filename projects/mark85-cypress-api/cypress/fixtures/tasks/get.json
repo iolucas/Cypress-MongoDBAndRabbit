@@ -28,5 +28,30 @@
         ]
       }
     ]
+  },
+  "unique": {
+    "user": {
+      "name": "Ed Sheeran",
+      "email": "sheeran@yahoo.com",
+      "password": "96523345"
+    },
+    "task": {
+      "name": "Do another feat with taylor swift",
+      "tags": [
+        "ts11",
+        "acoustic",
+        "guitar"
+      ]
+    }
+  },
+  "not_found": {
+    "user": {
+      "name": "Selena Gomez",
+      "email": "gomez@yahoo.com",
+      "password": "96523345"
+    },
+    "task": {
+      "name": "Dinner with besties"
+    }
   }
 }

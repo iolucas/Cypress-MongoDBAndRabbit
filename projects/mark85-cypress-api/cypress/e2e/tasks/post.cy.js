@@ -6,10 +6,10 @@ describe('POST /tasks', () => {
   })
   it('register a new task', function () {
     const { user, task } = this.tasks.create
-    cy.task('deleteUser', user.email)
+    cy.task('removeUser', user.email)
     cy.postUser(user)
     cy.postSession(user).then(userResp => {
-      cy.task('deleteTask', task.name, user.email)
+      cy.task('removeTask', task.name, user.email)
       cy.postTask(task, userResp.body.token).then(response => {
         expect(response.status).to.eq(200)
         expect(response.body.name).to.eq(task.name)
@@ -22,10 +22,10 @@ describe('POST /tasks', () => {
   })
   it('duplicated task', function () {
     const { user, task } = this.tasks.dup
-    cy.task('deleteUser', user.email)
+    cy.task('removeUser', user.email)
     cy.postUser(user)
     cy.postSession(user).then(userResp => {
-      cy.task('deleteTask', task.name, user.email)
+      cy.task('removeTask', task.name, user.email)
       cy.postTask(task, userResp.body.token)
       cy.postTask(task, userResp.body.token).then(response => {
         expect(response.status).to.eq(409)
