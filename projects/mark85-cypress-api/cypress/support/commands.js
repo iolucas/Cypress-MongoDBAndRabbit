@@ -39,7 +39,7 @@ Cypress.Commands.add('getTasks', (token) => {
 })
 Cypress.Commands.add('getUniqueTask', (taskId, token) => {
   cy.api({
-    url: '/tasks/' + taskId,
+    url: `/tasks/${taskId}`,
     method: 'GET',
     headers: {
       authorization: token,
@@ -49,11 +49,54 @@ Cypress.Commands.add('getUniqueTask', (taskId, token) => {
 })
 Cypress.Commands.add('deleteTask', (taskId, token) => {
   cy.api({
-    url: '/tasks/' + taskId,
+    url: `/tasks/${taskId}`,
     method: 'DELETE',
     headers: {
       authorization: token,
     },
     failOnStatusCode: false,
+  }).then(response => { return response })
+})
+Cypress.Commands.add('putTaskDone', (taskId, token) => {
+  cy.api({
+    url: `/tasks/${taskId}/done`,
+    method: 'PUT',
+    headers: {
+      authorization: token,
+    },
+    failOnStatusCode: false,
+  }).then(response => { return response })
+})
+Cypress.Commands.add('purgeQueueMessages', () => {
+  cy.api({
+    url: 'https://toad.rmq.cloudamqp.com/api/queues/mmssdsxy/tasks/contents',
+    method: 'DELETE',
+    body: {
+      vhost: 'mmssdsxy',
+      name: 'tasks',
+      mode: 'purge'
+    },
+    headers: {
+      authorization: 'Basic bW1zc2RzeHk6dnkwOWwzbzBvWmhDVW1aZjBoRGNraEltbUZ5ZElqQlY='
+    },
+    failOnStatusCode: false
+  }).then(response => { return response })
+})
+Cypress.Commands.add('getMessageQueue', () => {
+  cy.api({
+    url: 'https://toad.rmq.cloudamqp.com/api/queues/mmssdsxy/tasks/get',
+    method: 'POST',
+    body: {
+      vhost: 'mmssdsxy',
+      name: 'tasks',
+      truncate: '50000',
+      ackmode: 'ack_requeue_true',
+      encoding: 'auto',
+      count: '1'
+    },
+    headers: {
+      authorization: 'Basic bW1zc2RzeHk6dnkwOWwzbzBvWmhDVW1aZjBoRGNraEltbUZ5ZElqQlY='
+    },
+    failOnStatusCode: false
   }).then(response => { return response })
 })

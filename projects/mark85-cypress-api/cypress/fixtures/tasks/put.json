@@ -1,0 +1,26 @@
+{
+    "update": {
+      "user": {
+        "name": "Charli XCX",
+        "email": "xcx@yahoo.com",
+        "password": "96523345"
+      },
+      "task": {
+        "name": "Make another album for the gays",
+		"tags": [
+		  "pcmusic",
+		  "2024"
+		]
+      }
+    },
+    "not_found": {
+      "user": {
+        "name": "Lorde",
+        "email": "lorde@yahoo.com",
+        "password": "96523345"
+      },
+      "task": {
+        "name": "Be gone for at least 3 years"
+      }
+    }
+  }

@@ -8,7 +8,7 @@ describe('POST /users', () => {
     const user = this.users.create
     cy.task('removeUser', user.email)
     cy.postUser(user).then(response => {
-      expect(response.status).to.eq(200)
+      expect(response.status).to.eq(201)
     });
   })
   it('duplicate email', function() {
@@ -31,7 +31,7 @@ describe('POST /users', () => {
       cy.postUser(user)
         .then(response => {
         expect(response.status).to.eq(400)
-        expect(response.body.message).to.eq('ValidationError: \'name\' is required')
+        expect(response.body.message).to.eq('ValidationError: \"name\" is required')
       })
     })
     it('email is required', function() {
@@ -39,7 +39,7 @@ describe('POST /users', () => {
       cy.postUser(user)
         .then(response => {
         expect(response.status).to.eq(400)
-        expect(response.body.message).to.eq('ValidationError: \'email\' is required')
+        expect(response.body.message).to.eq('ValidationError: \"email\" is required')
       })
     })
     it('password is required', function() {
@@ -47,7 +47,7 @@ describe('POST /users', () => {
       cy.postUser(user)
         .then(response => {
         expect(response.status).to.eq(400)
-        expect(response.body.message).to.eq('ValidationError: \'password\' is required')
+        expect(response.body.message).to.eq('ValidationError: \"password\" is required')
       });
     });
   })

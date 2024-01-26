@@ -1,0 +1,27 @@
+{
+  "remove": {
+    "user": {
+      "name": "Avril Lavigne",
+      "email": "lavigne@yahoo.com",
+      "password": "96523345"
+    },
+    "task": {
+      "name": "Write some mature music",
+      "tags": [
+        "al8",
+        "2025",
+        "rock"
+      ]
+    }
+  },
+  "not_found": {
+    "user": {
+      "name": "Kanye West",
+      "email": "west@yahoo.com",
+      "password": "96523345"
+    },
+    "task": {
+      "name": "Lose all money and get pour"
+    }
+  }
+}

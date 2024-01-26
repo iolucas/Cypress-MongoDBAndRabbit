@@ -4,21 +4,38 @@ describe('POST /tasks', () => {
       this.tasks = tasks
     })
   })
-  it('register a new task', function () {
-    const { user, task } = this.tasks.create
-    cy.task('removeUser', user.email)
-    cy.postUser(user)
-    cy.postSession(user).then(userResp => {
-      cy.task('removeTask', task.name, user.email)
-      cy.postTask(task, userResp.body.token).then(response => {
-        expect(response.status).to.eq(200)
-        expect(response.body.name).to.eq(task.name)
-        expect(response.body.tags).to.deep.eq(task.tags)
-        expect(response.body.is_done).to.be.false
-        expect(response.body.user).to.eq(userResp.body.user._id)
-        expect(response.body._id.length).to.eq(24)
+  context('register a new task', function () {
+    before(function () {
+      cy.purgeQueueMessages()
+        .then(response => {
+          expect(response.status).to.eq(204)
+        })
+    })
+    it('post task', function () {
+      const { user, task } = this.tasks.create
+      cy.task('removeUser', user.email)
+      cy.postUser(user)
+      cy.postSession(user).then(userResp => {
+        cy.task('removeTask', task.name, user.email)
+        cy.postTask(task, userResp.body.token).then(response => {
+          expect(response.status).to.eq(201)
+          expect(response.body.name).to.eq(task.name)
+          expect(response.body.tags).to.deep.eq(task.tags)
+          expect(response.body.is_done).to.be.false
+          expect(response.body.user).to.eq(userResp.body.user._id)
+          expect(response.body._id.length).to.eq(24)
+        })
       })
     })
+    after(function () {
+      cy.wait(3000)
+      cy.getMessageQueue()
+        .then(response => {
+          expect(response.status).to.eq(200)
+          cy.log(JSON.stringify(response.body[0].payload))
+        })
+    })
+    
   })
   it('duplicated task', function () {
     const { user, task } = this.tasks.dup
